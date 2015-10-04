@@ -16,7 +16,7 @@ int main()
 	}
 	NodePtr iter;
 	iter= new haha;
-	for(iter=head;iter!=NULL;iter=iter->link)
+	for(iter=head;iter!=NULL;iter=iter->link) //loop through all the elements in linked list
 		cout<<iter->n<<" ";
 	cout<<endl;
 	return 0;
