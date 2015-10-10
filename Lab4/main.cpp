@@ -1,23 +1,33 @@
-#include"haha.h"
 #include<iostream>
 #include<fstream>
+#include"student.h"
 using namespace std;
 int main()
 {
-	NodePtr head;
-	head = new haha;
-	infile input_stream;
-	int n;
-	input_stream.open("haha.txt");
-	while(!input_stream.eof())
+	student stud;
+	NodePtr head, iter, iter1, ptr, loc, loc1, loc2;
+	int num, length = 0;
+	ifstream input;
+	input.open("student.txt");
+	input >> num;
+	head->n = num;
+	head->link = NULL;
+	while (!input.eof())
 	{
-		input_stream>>n;
-		add_elements(head,n);
+		input >> num;
+		stud.add_lists(head, num);
+		length++;
 	}
-	NodePtr iter;
-	iter= new haha;
-	for(iter=head;iter!=NULL;iter=iter->link) //loop through all the elements in linked list
-		cout<<iter->n<<" ";
-	cout<<endl;
+
+	cout << "\nNow sorting the Linked list \n";
+	stud.sort(head);
+	cout << "\nPrinting\n";
+	stud.print(head);
+	cout << "\nNow removing the Duplicate \n";
+	stud.del_duplicate(head);
+	cout << "\nPrinting\n";
+	stud.print(head);
+	input.close();
+	system("pause");
 	return 0;
 }
