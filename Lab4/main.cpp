@@ -15,7 +15,7 @@ int main()
 	while (!input.eof())
 	{
 		input >> num;
-		stud.add_lists(head, num);
+		stud.add_items(head, num);
 		length++;
 	}
 
