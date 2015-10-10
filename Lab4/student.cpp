@@ -31,7 +31,7 @@ void student::print(NodePtr& head)
 	for (iter = head; iter != NULL; iter = iter->link)
 		cout << iter->n << " ";
 }
-void del_duplicate(NodePtr& head)
+void student::del_duplicate(NodePtr& head)
 {
 	NodePtr iter, iter1, loc1, loc2, ptr, loc, dis, d;
 	for (iter = head; iter != NULL; iter = iter->link)
