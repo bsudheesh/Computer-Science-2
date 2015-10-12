@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+struct haha
+{
+    int n;
+    haha* link;
+};
+typedef haha* NodePtr;
+void add(NodePtr& head, int the_number);
+void reverse(NodePtr& head,NodePtr& current, NodePtr& prev,NodePtr& next);
+int main()
+{
+    typedef haha* NodePtr;
+    haha* head= new haha;
+    haha* prev = new haha;
+    haha* current= new haha;
+    haha* next= new haha;
+    
+    int length=0;
+    haha* iter= new haha;
+    head->n=0;
+    head->link=NULL;
+    
+    add(head, 10);
+    add(head, 20);
+    add(head, 22);
+    cout<<"\n Printing\n";
+    for(iter=head;iter!=NULL;iter=iter->link)
+        cout<<iter->n<<endl;
+    current=head;
+    prev=NULL;
+    cout<<"\nPrinting the reverse\n";
+    reverse(head,current,prev,next);
+    for(iter=head;iter!=NULL;iter=iter->link)
+        cout<<iter->n<<endl;
+    cout<<endl;
+    return 0;
+}
+void add(NodePtr& head, int the_number)
+{
+    haha* temp= new haha;
+    temp->n=the_number;
+    temp->link=head;
+    head=temp;
+}
+void reverse(NodePtr& head,NodePtr& current, NodePtr& prev,NodePtr& next)
+{
+    
+    if(current!=NULL)
+    
+    {
+        next=current->link;
+        current->link=prev;
+        prev=current;
+        current=next;
+        reverse(head,current,prev,next);
+    }
+    head=prev;
+}
+    
