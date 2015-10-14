@@ -19,7 +19,7 @@ class Student
 		//function that returns the name
 		string getName()
 		{
-				return l;
+				return t;
 		}
 		//function that returns the id
 		int getId()
