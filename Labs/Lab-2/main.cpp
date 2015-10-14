@@ -34,13 +34,13 @@ int main()
 		gstud.full_name = fn + ln;
 		gstud.id = id;
 		gstud.GPA = gpa;
-		gstud.research = r;
+		gstud.research = reas;
 		dept.gradstud[ii] = gstud;
 		ii ++;
 	};
 	b.close();
-	sortgradstudent(dept.gradstud,i);
-	printgradstudent(dept.gradstud,i);
+	sortgradstudent(dept.gradstud,ii);
+	printgradstudent(dept.gradstud,ii);
 
 
 
