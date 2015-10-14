@@ -4,8 +4,10 @@
 using namespace std;
 int main()
 {
+	typedef student* NodePtr;
 	student stud;
-	NodePtr head, iter, iter1, ptr, loc, loc1, loc2;
+	NodePtr head;
+	head= new student;
 	int num, length = 0;
 	ifstream input;
 	input.open("student.txt");
