@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "single.h"
-Single input()
+Single inputs()
 {
 	Single song;
 	string title, artist;
