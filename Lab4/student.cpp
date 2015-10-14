@@ -12,6 +12,9 @@ void student::add_items(NodePtr& head, int the_number)
 void student::sort(NodePtr& head)
 {
 	NodePtr iter, iter1, ptr;
+	iter= new student;
+	iter1= new student;
+	ptr= new student;
 	for (iter = head; iter != NULL; iter = iter->link)
 	{
 		for (iter1 = head; iter1 != NULL; iter1 = iter1->link)
@@ -28,12 +31,18 @@ void student::sort(NodePtr& head)
 void student::print(NodePtr& head)
 {
 	NodePtr iter;
+	iter= new student;
 	for (iter = head; iter != NULL; iter = iter->link)
 		cout << iter->n << " ";
 }
 void student::del_duplicate(NodePtr& head)
 {
-	NodePtr iter, iter1, loc1, loc2, ptr, loc, dis, d;
+	NodePtr iter, iter1, loc1, loc2, ptr;
+	iter=new student;
+	iter1= new student;
+	loc1= new student;
+	loc2= new student;
+	ptr= new student;
 	for (iter = head; iter != NULL; iter = iter->link)
 	{
 		for (iter1 = head; iter1 != NULL; iter1 = iter1->link)
@@ -44,13 +53,29 @@ void student::del_duplicate(NodePtr& head)
 				loc1 = iter;
 				loc2 = iter1;
 				ptr = loc2->link;
-				iter->link = loc2->link;
-				delete loc2->link;
-				iter1->link = ptr;
+				iter->link = ptr;
+				delete loc2;
+				iter1 = ptr;
 			}
 		}
 
 	}
 
-
+}
+void student::reverse(NodePtr& head)
+{
+	NodePtr current,prev,next;
+	current = new student;
+	prev= new student;
+	next= new student;
+	current=head;
+	prev=NULL;
+	while(current!=NULL)
+	{
+		next=current->link;
+		current->link=prev;
+		prev=current;
+		current=next;
+	}
+	head=prev;
 }
