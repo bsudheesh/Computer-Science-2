@@ -1,5 +1,5 @@
+#include<iostream>
 #include "student.h"
-#include <iostream>
 using namespace std;
 void Student::printStudent()
 {
@@ -7,10 +7,10 @@ void Student::printStudent()
 	cout << "ID: "  << id << endl;
 	cout <<  "GPA: " << GPA << endl << endl;
 }
-cout<<"Now sorting array\n";
 void sortStudentArrayGPA(Student arr[], int n)
 {
-	 int minIndex = 0; 
+	cout<<"\Now sorting array\n"; 
+	int minIndex = 0; 
 	  int startIndex = 0;
 	  for (startIndex; startIndex < n; startIndex++)
 	  {
@@ -26,9 +26,3 @@ void sortStudentArrayGPA(Student arr[], int n)
 		  }
 	  };
 }
-
-
-
-
-
-
