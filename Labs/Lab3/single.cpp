@@ -13,7 +13,7 @@ Single input()
 	cin >> song.rating;
 	return song;
 }
-void output(Single song)
+void outputs(Single song)
 {
 	ofstream output_1;
 	output_1.open("favSongs.txt");
