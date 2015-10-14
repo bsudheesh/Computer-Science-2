@@ -1,19 +1,22 @@
 #include<iostream>
 #include "student.h"
-#include "gradStudent.h"
-struct department
+class gradStudent:public Student //Inherties the public members of class Student
 {
 	public:
-		Student stud[15];
-		gradStudent gradstud[15];
-		void printGrad();
-		void printstudent(Student stu[], int num);
-		void sortStudent(Student stu[], int num);
-		void printgradstudent(gradStudent gstu[], int num);
-		void sortgradstudent(gradStudent gstu[], int num);
-
-
-	
+		string research,full_name;
+		int id;
+		float GPA;
+		void printgradStudent();
+		void ini(string n, int i, float g, string r) //Initiliazes name, id, gpa and reasearch
+		{
+			full_name = n;
+			id = i;
+			GPA = g;
+			research = r;
+		}
+		string getresearch()//returns the reasearch area
+		{
+			return research;
+		}
 };
-
 
