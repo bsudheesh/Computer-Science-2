@@ -19,9 +19,9 @@ int main()
 			input >> song.artist;
 			input >> song.title;
 			input >> song.rating;
-			output << song.artist << " ";
-			output << song.title  << " ";
-			output << song.rating << " " << endl;
+			output << song.artist <<endl;
+			output << song.title  << endl;
+			output << song.rating << endl;
 			playlist.add(song);
         }
         else
