@@ -24,10 +24,17 @@ int main()
 	cout << "\nNow sorting the Linked list \n";
 	stud.sort(head);
 	cout << "\nPrinting\n";
-	stud.print(head);
+	stud.print(head);			
+	cout<<"\n Now reversing the list\n";
+	stud.reverse(head);
+	cout<<"\n Now printing \n";
 	cout << "\nNow removing the Duplicate \n";
 	stud.del_duplicate(head);
 	cout << "\nPrinting\n";
+	stud.print(head);		
+	cout<<"\n Now reversing the list\n";
+	stud.reverse(head);
+	cout<<"\n Now printing \n";
 	stud.print(head);
 	input.close();
 	system("pause");
