@@ -21,12 +21,12 @@ int main()
 		stu.t = t;
 		stu.id = id;
 		stu.GPA = gpa;
-		stu.stud[i] = stu;
+		dept.stud[i] = stu;
 		i++;
 	};
 	a.close();
-	sortStudent(depart.stud,num); 
-	printstudent(depart.stud,num);
+	sortStudent(dept.stud,i); 
+	printstudent(dept.stud,i);
 	cout << "Now for Graduate students \n";
 	while (!b.eof())
 	{
@@ -34,13 +34,13 @@ int main()
 		gstud.full_name = fn + ln;
 		gstud.id = id;
 		gstud.GPA = gpa;
-		gstud.research_area = Research;
-		depart.gstudArray[ii] = gstud;
+		gstud.research = r;
+		dept.gradstud[ii] = gstud;
 		ii ++;
 	};
 	b.close();
-	sortgradstudent(depart.gstud,num);
-	printgradstudent(depart.gstud,num);
+	sortgradstudent(dept.gradstud,i);
+	printgradstudent(dept.gradstud,i);
 
 
 
