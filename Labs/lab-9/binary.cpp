@@ -83,7 +83,7 @@ node* delete_node(node* root, int number)
 	}
 	return root;
 }
-node* FindMin(node* root)
+node* FindMin(node* root) //returns the node address of the minimum value
 {
 	while(root->left!=NULL)
 		root=root->left;
@@ -102,6 +102,7 @@ node* search(node* root, int number)
 	else 
 		return search(root->left,number);
 }
+//prints the ancestor
 void print_ancestor(node* root, int number)
 {
 	node* current = search(root, number); //current is set as the pointer to the node to be found
@@ -127,6 +128,27 @@ void print_ancestor(node* root, int number)
 					ancestor = ancestor->right;				
 			}
 		}
+	}
+	cout<<endl;
+}
+//prints the common ancestor
+void common_ancestor(node* root, node* node1, node* node2)
+{
+	node* ancestor_node1 = root; //
+	node* ancestor_node2 = root;
+	cout<<"\nThe common ancestor of two numbers are : ";
+	while((ancestor_node1!=node1)&&(ancestor_node2!=node2))
+	{
+		if ((ancestor_node1->data==ancestor_node2->data))
+			cout<<ancestor_node1->data<<" ";
+		else if((node1->data < ancestor_node1->data))
+			ancestor_node1 = ancestor_node1->left;
+		else if((node2->data < ancestor_node2->data))
+			ancestor_node2 = ancestor_node2->left;
+		else if((node1->data > ancestor_node1->data))
+			ancestor_node1 = ancestor_node1->right;
+		else if ((node2->data > ancestor_node2->data))
+			ancestor_node2 = ancestor_node2->right;
 	}
 	cout<<endl;
 }
