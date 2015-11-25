@@ -9,7 +9,7 @@ int main()
 	root = new node;
 	root=NULL;
 	ifstream infile;
-	int number,number_deleted,number_added,ancestor;
+	int number,number_deleted,number_added,ancestor,number_node1, number_node2;
 	infile.open("binary.txt");
 	cout<<"\nAdding the elements\n";
 	while(!infile.eof())
@@ -34,13 +34,17 @@ int main()
 	add_elements(root,number_added);
 	cout<<"\nPrinting in inorder to see the number deleted\n";
 	inorder(root);
-	cout<<"\nEnter the number whose successor is to be found : ";
+	cout<<"\nEnter the number whose ancestor is to be found : ";
 	cin>>ancestor;
 	print_ancestor(root,ancestor);
-	cout<<endl;
+	cout<<"\nEnter the first number whose common ancestor is to be found : ";
+	cin>>number_node1;
+	cout<<"\nEnter the second number whose common ancestor is to be found : ";
+	cin>>number_node2;
+	node* temp1 = search(root,number_node1);
+	node* temp2= search(root,number_node2);
+	cout<<"\nNow finding the common ancestor\n";
+	common_ancestor(root,temp1,temp2);
 	system("pause");
 	return 0;
 }
-
-
-	
