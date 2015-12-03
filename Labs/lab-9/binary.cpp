@@ -134,13 +134,25 @@ void print_ancestor(node* root, int number)
 //prints the common ancestor
 void common_ancestor(node* root, node* node1, node* node2)
 {
-	node* ancestor_node1 = root; //
-	node* ancestor_node2 = root;
+	node* ancestor_node1 = root; //ancestor_node1 is used to traverse the binary tree from root till it reaches node1 
+	node* ancestor_node2 = root; //ancestor_node2 is used to traverse the binary tree from root till it reaches node2
 	cout<<"\nThe common ancestor of two numbers are : ";
-	while((ancestor_node1!=node1)&&(ancestor_node2!=node2))
+	while((ancestor_node1!=node1)&&(ancestor_node2!=node2)) //the loop will run till one of the ancestor nodes equal the memory address of the node
 	{
-		if ((ancestor_node1->data==ancestor_node2->data))
-			cout<<ancestor_node1->data<<" ";
+		if ((ancestor_node1->data==ancestor_node2->data)) //if the values are equal
+		{
+			cout<<ancestor_node1->data<<" "; //print the values
+			//this will move the ancestor_nodes accordingly, else there will be an infinite loop
+			if(node1->data < ancestor_node1->data)			
+				ancestor_node1=ancestor_node1->left;			
+			else if(node2->data < ancestor_node2->data)
+				ancestor_node2=ancestor_node2->left;
+			else if(node1->data > ancestor_node1->data)
+				ancestor_node1=ancestor_node1->right;
+			else
+				ancestor_node2=ancestor_node2->right;				
+		}
+		//if the values are not equal, move the ancestor node accordingly 
 		else if((node1->data < ancestor_node1->data))
 			ancestor_node1 = ancestor_node1->left;
 		else if((node2->data < ancestor_node2->data))
