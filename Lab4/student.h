@@ -1,14 +1,11 @@
-#pragma once
 #include<iostream>
 using namespace std;
 struct student
 {
-	int n;
-	student* link;
-	typedef student* NodePtr;
-	void add_items(NodePtr& head, int the_number);
-	void sort(NodePtr& head);
-	void del_duplicate(NodePtr& head);
-	void reverse(NodePtr& head);
-	void print(NodePtr& head);
+	int data;
+	student* next;
 };
+student* add_elements(int number); //function that adds elements and returns the head
+void print(student* head); //function that prints the linked list
+void delete_duplicates(student* head); //function that deletes the duplicates
+student* reverse_list(student* head); //function that reverses the linked list
