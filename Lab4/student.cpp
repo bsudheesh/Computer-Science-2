@@ -1,81 +1,93 @@
 #include<iostream>
 #include"student.h"
-using namespace std;
-void student::add_items(NodePtr& head, int the_number)
+student* head = NULL; //declaring head pointer globally
+student* add_elements(int number)
 {
-	NodePtr temp;
-	temp = new student;
-	temp->n = the_number;
-	temp->link = head;
-	head = temp;
-}
-void student::sort(NodePtr& head)
-{
-	NodePtr iter, iter1, ptr;
-	iter= new student;
-	iter1= new student;
-	ptr= new student;
-	for (iter = head; iter != NULL; iter = iter->link)
+	student* temp = new student;	
+	if (head == NULL) //head is set as NULL for the first time
 	{
-		for (iter1 = head; iter1 != NULL; iter1 = iter1->link)
+		head = temp;
+		temp->data = number; 
+		temp->next = NULL;	
+		return head;
+	}
+	else 
+	{
+		student* temp2 = head; //if there is only one elements in linked list
+		if (temp2->data > number) 
+		{	
+			temp->next = temp2;
+			head = temp;
+
+		}
+		else 
 		{
-			if (iter->n < iter1->n)
+			
+			while (temp2->next != NULL && temp2->next->data < number)  
 			{
-				ptr->n = iter->n;
-				iter->n = iter1->n;
-				iter1->n = ptr->n;
+				temp2 = temp2->next;
+				if (temp2->next == NULL) 
+				{
+					temp->data = number;
+					temp2->next = temp; 
+					temp->next = NULL;
+					return head;
+				}
 			}
+			temp->data = number;
+			temp->next = temp2->next;
+			temp2->next = temp;
+		}	
+	}
+	return head; //returns the head
+	
+}
+void print(student* head)
+{
+	student* iter= new student;
+	for(iter=head;iter!=NULL;iter=iter->next) //loops throught the linked list
+		cout<<iter->data<<" ";
+	cout<<endl;
+}
+void delete_duplicates(student* head)
+{
+	student *slow,*fast,*temp; //points to head at first
+	slow=head;
+	fast=slow->next;
+	while((slow!=NULL)&&(fast!=NULL))
+	{
+		if(slow->data==fast->data) //if values are same
+		{
+			temp=fast;
+			slow->next=fast->next;
+			fast=fast->next;
+			delete temp; //deltes the duplicate node
+		}
+		else
+		{
+			//values are not same, change the slow and fast pointes
+			slow=slow->next;
+			fast=fast->next;
 		}
 	}
 }
-void student::print(NodePtr& head)
+student* reverse_list(student* head)
 {
-	NodePtr iter;
-	iter= new student;
-	for (iter = head; iter != NULL; iter = iter->link)
-		cout << iter->n << " ";
-}
-void student::del_duplicate(NodePtr& head)
-{
-	NodePtr iter, iter1, loc1, loc2, ptr;
-	iter=new student;
-	iter1= new student;
-	loc1= new student;
-	loc2= new student;
-	ptr= new student;
-	for (iter = head; iter != NULL; iter = iter->link)
-	{
-		for (iter1 = head; iter1 != NULL; iter1 = iter1->link)
-		{
-			if ((iter->n == iter1->n) && (iter->link != iter1->link))
-			{
-				cout << "\nthe dublicate item to be deleted is " << iter->n;
-				loc1 = iter;
-				loc2 = iter1;
-				ptr = loc2->link;
-				iter->link = ptr;
-				delete loc2;
-				iter1 = ptr;
-			}
-		}
-
-	}
-
-}
-void student::reverse(NodePtr& head)
-{
-	NodePtr current,prev,next;
-	current = new student;
-	prev= new student;
-	next= new student;
+	student *current,*after,*previous; 
 	current=head;
-	prev=NULL;
+	previous=NULL;
 	while(current!=NULL)
 	{
-		next=current->link;
-		current->link=prev;
-		prev=current;
-		current=next;
+		after=current->next;
+		current->next=previous;
+		previous=current;
+		current=after;
 	}
-	head=prev;
+	head=previous; //changing the head after the complete reversal of linked list
+	return head;//returning the new head
 }
+
+
+
+
+		
