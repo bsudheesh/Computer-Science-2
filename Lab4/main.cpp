@@ -4,39 +4,31 @@
 using namespace std;
 int main()
 {
-	typedef student* NodePtr;
-	student stud;
-	NodePtr head;
-	head= new student;
-	int num, length = 0;
-	ifstream input;
-	input.open("student.txt");
-	input >> num;
-	head->n = num;
-	head->link = NULL;
-	while (!input.eof())
+	student* head; //declaring head;
+	ifstream input_stream; //deaclaring input stream
+	int number,count=0;
+	input_stream.open("student.txt"); //opening the file
+	cout<<"\nAdding the elements\n";
+	while(!input_stream.eof())
 	{
-		input >> num;
-		stud.add_items(head, num);
-		length++;
-	}
+		input_stream>>number;
+		if(count==0)	
+		{
+			head=add_elements(number); //for the first value that is added, head is assigned to that node
+			count++;
+		}
+		else
+			add_elements(number);
 
-	cout << "\nNow sorting the Linked list \n";
-	stud.sort(head);
-	cout << "\nPrinting\n";
-	stud.print(head);			
-	cout<<"\n Now reversing the list\n";
-	stud.reverse(head);
-	cout<<"\n Now printing \n";
-	cout << "\nNow removing the Duplicate \n";
-	stud.del_duplicate(head);
-	cout << "\nPrinting\n";
-	stud.print(head);		
-	cout<<"\n Now reversing the list\n";
-	stud.reverse(head);
-	cout<<"\n Now printing \n";
-	stud.print(head);
-	input.close();
+	}
+	cout<<"\nNow priting the linked list \n";
+	print(head);
+	cout<<"\nNow deleting the duplicates\n";
+	delete_duplicates(head); //calling the function that deletes the duplicates
+	print(head);
+	cout<<"\nNow reversing the list\n";	
+	head=reverse_list(head); //calling the function that reverses the linked list
+	print(head);
 	system("pause");
 	return 0;
 }
